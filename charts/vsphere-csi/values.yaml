@@ -1212,7 +1212,7 @@ snapshotwebhook:
   image:
     registry: registry.k8s.io
     repository: sig-storage/snapshot-validation-webhook
-    tag: v6.0.1
+    tag: v7.0.1
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
     ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
