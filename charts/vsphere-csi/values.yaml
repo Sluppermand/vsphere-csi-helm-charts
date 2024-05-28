@@ -154,7 +154,7 @@ service:
   loadBalancerSourceRanges: []
   ## @param service.externalTrafficPolicy vsphere-csi service external traffic policy
   ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
-  ##
+  ## 
   externalTrafficPolicy: Cluster
   ## @param service.annotations Additional custom annotations for vsphere-csi service
   ##
@@ -170,21 +170,8 @@ controller:
   ## @param controller.config [object] block to freely define options for the controller configmap
   ## see https://github.com/kubernetes-sigs/vsphere-csi-driver/blob/61d981a1a1641693a2a6727e1994c82d26fed14b/pkg/csi/service/common/constants.go#L258
   config:
-    csi-migration: true
-    csi-auth-check: true
-    online-volume-extend: true
     trigger-csi-fullsync: false
-    async-query-volume: true
-    block-volume-snapshot: true
-    csi-windows-support: true
-    list-volumes: true
     pv-to-backingdiskobjectid-mapping: false
-    cnsmgr-suspend-create-volume: true
-    topology-preferential-datastores: true
-    max-pvscsi-targets-per-vm: true
-    multi-vcenter-csi-topology: true
-    csi-internal-generated-cluster-id: true
-    listview-tasks: false
 
 
   ## controller image
