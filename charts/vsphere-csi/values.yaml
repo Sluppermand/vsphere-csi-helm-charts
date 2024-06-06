@@ -643,7 +643,9 @@ controller:
     ## Configure Container Security Context
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
     ## @param controller.syncer.containerSecurityContext.enabled Enabled controller.syncer containers' Security Context
+    ## @param controller.syncer.containerSecurityContext.runAsNonRoot Enabled controller.syncer containers' runAsNonRoot
     ## @param controller.syncer.containerSecurityContext.runAsUser Set controller.syncer containers' Security Context runAsUser
+    ## @param controller.syncer.containerSecurityContext.runAsGroup Set controller.syncer containers' Security Context runAsGroup
     ##
     containerSecurityContext:
       enabled: true
@@ -1052,7 +1054,9 @@ controller:
   ## Configure Container Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
   ## @param controller.containerSecurityContext.enabled Enabled controller containers' Security Context
+  ## @param controller.containerSecurityContext.runAsNonRoot Enabled controller containers' runAsNonRoot
   ## @param controller.containerSecurityContext.runAsUser Set controller containers' Security Context runAsUser
+  ## @param controller.containerSecurityContext.runAsGroup Set controller containers' Security Context runAsgroup
   ##
   containerSecurityContext:
     enabled: true
@@ -1551,11 +1555,8 @@ node:
     ## Configure extra options for node.registrar containers' liveness and readiness probes
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
     ## @param node.registrar.livenessProbe.enabled Enable livenessProbe on node.registrar nodes
-    ## @param node.registrar.livenessProbe.httpGet.path Path for HTTPGet Livenessprobe
-    ## @param node.registrar.livenessProbe.httpGet.port Path for HTTPGet Livenessprobe
     ## @param node.registrar.livenessProbe.initialDelaySeconds Initial delay seconds for livenessProbe
     ## @skip node.registrar.livenessProbe.periodSeconds Period seconds for livenessProbe
-    ## @param node.registrar.livenessProbe.timeoutSeconds Timeout seconds for livenessProbe
     ## @skip node.registrar.livenessProbe.failureThreshold Failure threshold for livenessProbe
     ## @skip node.registrar.livenessProbe.successThreshold Success threshold for livenessProbe
     ## @param node.registrar.livenessProbe.exec [object] Command for Exec Livenessprobe
@@ -2041,11 +2042,9 @@ winnode:
     ## Configure extra options for winnode.registrar containers' liveness and readiness probes
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
     ## @param winnode.registrar.livenessProbe.enabled Enable livenessProbe on winnode.registrar nodes
-    ## @param winnode.registrar.livenessProbe.httpGet.path Path for HTTPGet Livenessprobe
-    ## @param winnode.registrar.livenessProbe.httpGet.port Path for HTTPGet Livenessprobe
+    ## @param winnode.registrar.livenessProbe.exec.command LivenessProbe command
     ## @param winnode.registrar.livenessProbe.initialDelaySeconds Initial delay seconds for livenessProbe
     ## @skip winnode.registrar.livenessProbe.periodSeconds Period seconds for livenessProbe
-    ## @param winnode.registrar.livenessProbe.timeoutSeconds Timeout seconds for livenessProbe
     ## @skip winnode.registrar.livenessProbe.failureThreshold Failure threshold for livenessProbe
     ## @skip winnode.registrar.livenessProbe.successThreshold Success threshold for livenessProbe
     ##
@@ -2522,9 +2521,7 @@ webhook:
     fsGroup: 1001
   ## Configure Container Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
-  ## @param webhook.containerSecurityContext.enabled Enabled webhook containers' Security Context
-  ## @param webhook.containerSecurityContext.privileged Set webhook containers' Security Context privileged
-  ## @param webhook.containerSecurityContext.allowPrivilegeEscalation Set webhook containers' Security Context allowPrivilegeEscalation
+  ## @param webhook.containerSecurityContext Container Security Context
   ## @skip webhook.containerSecurityContext.capabilities.add
   containerSecurityContext: {}
 
@@ -2750,6 +2747,9 @@ rbac:
 
 vsphere-cpi:
   enabled: false
+
+## @param snapshot.controller.enabled Enable Snapshot controller
+## @param snapshot.validationWebhook.enabled Enable Snapshot validationWebhook
 
 snapshot:
   controller:
